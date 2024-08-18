@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmqr321sudroj"]
+
+[ext_resource type="PackedScene" uid="uid://delj4wqx3ve5o" path="res://prefabs/goap/goap_sensor.tscn" id="1_n1y2w"]
+[ext_resource type="Texture2D" uid="uid://cb8gfxoy87bok" path="res://textures/grid.png" id="2_alim6"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_eal6j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukj7q"]
+albedo_texture = ExtResource("2_alim6")
+uv1_scale = Vector3(30, 30, 30)
+
+[node name="world" type="Node3D"]
+
+[node name="GOAPSensor" parent="." instance=ExtResource("1_n1y2w")]
+
+[node name="props" type="Node" parent="."]
+
+[node name="floor" type="MeshInstance3D" parent="props"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("PlaneMesh_eal6j")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_ukj7q")
