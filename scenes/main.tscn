@@ -1,7 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmqr321sudroj"]
+[gd_scene load_steps=9 format=3 uid="uid://cmqr321sudroj"]
 
 [ext_resource type="PackedScene" uid="uid://delj4wqx3ve5o" path="res://prefabs/goap/goap_sensor.tscn" id="1_n1y2w"]
 [ext_resource type="Texture2D" uid="uid://cb8gfxoy87bok" path="res://textures/grid.png" id="2_alim6"]
+[ext_resource type="PackedScene" uid="uid://dai2mxew1vntm" path="res://prefabs/actors/player.tscn" id="3_twmce"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xivon"]
+sky_top_color = Color(0.254428, 0.483349, 0.567951, 1)
+sky_horizon_color = Color(0.595997, 0.653227, 0.674377, 1)
+ground_bottom_color = Color(0.129558, 0.129558, 0.129558, 1)
+ground_horizon_color = Color(0.595997, 0.653227, 0.674377, 1)
+
+[sub_resource type="Sky" id="Sky_fisd5"]
+sky_material = SubResource("ProceduralSkyMaterial_xivon")
+
+[sub_resource type="Environment" id="Environment_33nt5"]
+background_mode = 2
+sky = SubResource("Sky_fisd5")
+tonemap_mode = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_eal6j"]
 
@@ -10,6 +25,12 @@ albedo_texture = ExtResource("2_alim6")
 uv1_scale = Vector3(30, 30, 30)
 
 [node name="world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_33nt5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 12, 20)
 
 [node name="GOAPSensor" parent="." instance=ExtResource("1_n1y2w")]
 
@@ -20,3 +41,6 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("PlaneMesh_eal6j")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ukj7q")
+
+[node name="player" parent="." instance=ExtResource("3_twmce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)

@@ -8,13 +8,17 @@ public partial class Sensor : Node
 
     Node3D target;
     Vector3 lastKnownPosition;
-    float test;
     public event Action OnTargetUpdated = delegate{};
 
     public Vector3 TargetPosition => target?.GlobalTransform.Origin?? Vector3.Zero;
     public bool TargetInRange => TargetPosition != Vector3.Zero;
+    private string PlayerTag = "player";
 
-    public void UpdateTargetPosition(Node3D newTarget)
+    public override void _Ready()
+    {
+        updateTimer.Start();
+    }
+    public void UpdateTargetPosition(Node3D newTarget = null)
     {
         target = newTarget;
         if(TargetInRange && (lastKnownPosition != TargetPosition || lastKnownPosition != Vector3.Zero))
@@ -23,13 +27,23 @@ public partial class Sensor : Node
             OnTargetUpdated.Invoke();
         }
     }
-
-     public override void _Ready()
-    {
-        updateTimer.Start();
-    }
     private void OnTimerTimeout()
     {
+        UpdateTargetPosition(target);
         updateTimer.Start();
+    }
+    public void OnBodyEnter(Node3D body)
+    {
+        if(body.IsInGroup(PlayerTag))
+        {
+            GD.Print("player entered");
+        }
+    }
+    public void OnBodyExit(CharacterBody3D body)
+    {
+        if(body.IsInGroup(PlayerTag))
+        {
+            GD.Print("player exited");
+        }
     }
 }

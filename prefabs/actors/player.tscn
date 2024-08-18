@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dai2mxew1vntm"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_w8x4u"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wqlhi"]
+
+[node name="player" type="CharacterBody3D" groups=["player"]]
+
+[node name="collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_w8x4u")
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_wqlhi")
+skeleton = NodePath("")
