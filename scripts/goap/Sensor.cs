@@ -37,6 +37,8 @@ public partial class Sensor : Node
         if(body.IsInGroup(PlayerTag))
         {
             GD.Print("player entered");
+            target = body;
+            UpdateTargetPosition(body);
         }
     }
     public void OnBodyExit(CharacterBody3D body)

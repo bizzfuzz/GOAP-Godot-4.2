@@ -29,6 +29,13 @@ public class BeliefFactory
         .WithObservedLocation(()=>locationCondition)
         .Build());
     }
+    public void AddSensorBelief(string name, Sensor sensor)
+    {
+        beliefs.Add(name, new AgentBelief.Builder(name)
+        .WithCondition(() => sensor.TargetInRange)
+        .WithObservedLocation(() => sensor.TargetPosition)
+        .Build());
+    }
 
     bool InRangeOf(Vector3 pos, float range)
     {
