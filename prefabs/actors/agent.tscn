@@ -1,0 +1,34 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd202hkqg2vu1"]
+
+[ext_resource type="Script" path="res://scripts/goap/GoapAgent.cs" id="1_5u634"]
+[ext_resource type="Script" path="res://scripts/actors/Actor.cs" id="1_sm282"]
+[ext_resource type="PackedScene" uid="uid://b4g61purbtx5c" path="res://meshes/goblin/goblin.tscn" id="2_4enuq"]
+[ext_resource type="PackedScene" uid="uid://2fp10p8xah0r" path="res://prefabs/goap/attack_sensor.tscn" id="3_rcx2d"]
+[ext_resource type="PackedScene" uid="uid://c1o3b3kakalel" path="res://prefabs/goap/chase_sensor.tscn" id="4_5p77h"]
+[ext_resource type="AnimationLibrary" uid="uid://j8qe6cjhg6sl" path="res://meshes/goblin/animations.res" id="6_4d8gd"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fl74e"]
+
+[node name="agent" type="CharacterBody3D"]
+script = ExtResource("1_sm282")
+
+[node name="mesh" parent="." instance=ExtResource("2_4enuq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fl74e")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="goap" type="Node" parent="."]
+script = ExtResource("1_5u634")
+
+[node name="attackSensor" parent="goap" instance=ExtResource("3_rcx2d")]
+
+[node name="chaseSensor" parent="goap" instance=ExtResource("4_5p77h")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../mesh")
+libraries = {
+"animations": ExtResource("6_4d8gd")
+}

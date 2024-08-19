@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1o3b3kakalel"]
+
+[ext_resource type="PackedScene" uid="uid://delj4wqx3ve5o" path="res://prefabs/goap/goap_sensor.tscn" id="1_jjieh"]
+
+[node name="chaseSensor" instance=ExtResource("1_jjieh")]
+
+[node name="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)

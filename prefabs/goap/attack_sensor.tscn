@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://2fp10p8xah0r"]
+
+[ext_resource type="PackedScene" uid="uid://delj4wqx3ve5o" path="res://prefabs/goap/goap_sensor.tscn" id="1_tfhns"]
+
+[node name="attackSensor" instance=ExtResource("1_tfhns")]

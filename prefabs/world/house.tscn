@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpqw0n2pi6nhh"]
+
+[ext_resource type="PackedScene" uid="uid://ujo62b2ccjrg" path="res://meshes/mausoleum_stylized.glb" id="1_g0obo"]
+
+[node name="house" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_g0obo")]
