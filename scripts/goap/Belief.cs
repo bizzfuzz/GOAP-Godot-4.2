@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class BeliefFactory
 {
-    readonly GOAPAgent agent;
+    readonly GoapAgent agent;
     readonly Dictionary<string, AgentBelief> beliefs;
 
-    public BeliefFactory(GOAPAgent agent, Dictionary<string, AgentBelief> beliefs)
+    public BeliefFactory(GoapAgent agent, Dictionary<string, AgentBelief> beliefs)
     {
         this.agent = agent;
         this.beliefs = beliefs;

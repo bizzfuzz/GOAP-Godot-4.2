@@ -9,8 +9,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fl74e"]
 
-[node name="agent" type="CharacterBody3D"]
+[node name="agent" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayer")]
 script = ExtResource("1_sm282")
+animationPlayer = NodePath("AnimationPlayer")
 
 [node name="mesh" parent="." instance=ExtResource("2_4enuq")]
 
@@ -20,8 +21,9 @@ shape = SubResource("CapsuleShape3D_fl74e")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="goap" type="Node" parent="."]
+[node name="goap" type="Node3D" parent="." node_paths=PackedStringArray("NavAgent")]
 script = ExtResource("1_5u634")
+NavAgent = NodePath("../NavigationAgent3D")
 
 [node name="attackSensor" parent="goap" instance=ExtResource("3_rcx2d")]
 
