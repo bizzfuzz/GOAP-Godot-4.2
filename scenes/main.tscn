@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmqr321sudroj"]
+[gd_scene load_steps=13 format=3 uid="uid://cmqr321sudroj"]
 
 [ext_resource type="PackedScene" uid="uid://delj4wqx3ve5o" path="res://prefabs/goap/goap_sensor.tscn" id="1_n1y2w"]
 [ext_resource type="Texture2D" uid="uid://cb8gfxoy87bok" path="res://textures/grid.png" id="2_alim6"]
@@ -18,29 +18,66 @@ background_mode = 2
 sky = SubResource("Sky_fisd5")
 tonemap_mode = 2
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_kfed4"]
+vertices = PackedVector3Array(-29.5, 0.5, -16.75, -19.75, 0.5, -16.75, -19.75, 0.5, -18.5, -19.75, 0.5, -18.5, -17.75, 0.5, -18.75, -17.75, 0.5, -29.5, -19.75, 0.5, -18.5, -17.75, 0.5, -29.5, -29.5, 0.5, -29.5, -29.5, 0.5, -16.75, 18.75, 0.5, 9.25, 19, 0.5, 11, 29.5, 0.5, 11, 29.5, 0.5, -29.5, -17.75, 0.5, -29.5, -17.75, 0.5, -18.75, -16, 0.5, -18.5, -16, 0.5, -18.5, -16, 0.5, -15.5, 15.75, 0.5, 9.25, -16, 0.5, -15.5, -16.75, 0.5, -15, 15.75, 0.5, 9.25, 15.75, 0.5, 9.25, 18.75, 0.5, 9.25, 29.5, 0.5, -29.5, -17.75, 0.5, -29.5, -16, 0.5, -18.5, -18.75, 3, -17.75, -18.75, 3, -16.25, -17.25, 3, -16.25, -17.25, 3, -17.75, -18.5, 0.5, -17.5, -18.5, 0.5, -16.25, -17.25, 0.5, -16.25, -17.25, 0.5, -17.5, -19.5, 0.5, -15, -19.75, 0.5, -16.75, -29.5, 0.5, -16.75, 17, 0.5, 29.5, 17, 0.5, 13, 15.25, 0.5, 12.75, 15.25, 0.5, 9.5, 15.75, 0.5, 9.25, -16.75, 0.5, -15, 15.25, 0.5, 12.75, 15.25, 0.5, 9.5, -16.75, 0.5, -15, -19.5, 0.5, -15, -19.5, 0.5, -15, -29.5, 0.5, -16.75, -29.5, 0.5, 29.5, 17, 0.5, 29.5, 15.25, 0.5, 12.75, 16.25, 3, 10.25, 16.25, 3, 11.75, 17.75, 3, 11.75, 17.75, 3, 10.25, 16.5, 0.5, 10.5, 16.5, 0.5, 11.75, 17.75, 0.5, 11.75, 17.75, 0.5, 10.5, 29.5, 0.5, 11, 19, 0.5, 11, 19, 0.5, 12.5, 29.5, 0.5, 11, 19, 0.5, 12.5, 18.5, 0.5, 13, 17, 0.5, 29.5, 29.5, 0.5, 29.5, 18.5, 0.5, 13, 17, 0.5, 13, 17, 0.5, 29.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(20, 22, 21), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 27), PackedInt32Array(25, 27, 26), PackedInt32Array(31, 30, 28), PackedInt32Array(28, 30, 29), PackedInt32Array(35, 34, 32), PackedInt32Array(32, 34, 33), PackedInt32Array(38, 37, 36), PackedInt32Array(41, 40, 39), PackedInt32Array(44, 43, 42), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 45), PackedInt32Array(50, 49, 51), PackedInt32Array(51, 49, 53), PackedInt32Array(51, 53, 52), PackedInt32Array(57, 56, 54), PackedInt32Array(54, 56, 55), PackedInt32Array(61, 60, 58), PackedInt32Array(58, 60, 59), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 69), PackedInt32Array(67, 69, 68), PackedInt32Array(72, 71, 70)]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_eal6j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukj7q"]
 albedo_texture = ExtResource("2_alim6")
 uv1_scale = Vector3(30, 30, 30)
 
+[sub_resource type="BoxMesh" id="BoxMesh_m8bx1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_83uf0"]
+albedo_color = Color(0.47467, 0.974797, 0.548721, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jirm"]
+albedo_color = Color(0.316409, 0.96476, 0.868505, 1)
+
 [node name="world" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="environment" type="Node" parent="."]
+
+[node name="sun" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="environment"]
 environment = SubResource("Environment_33nt5")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 12, 20)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="environment"]
+navigation_mesh = SubResource("NavigationMesh_kfed4")
 
-[node name="GOAPSensor" parent="." instance=ExtResource("1_n1y2w")]
-
-[node name="props" type="Node" parent="."]
-
-[node name="floor" type="MeshInstance3D" parent="props"]
+[node name="floor" type="MeshInstance3D" parent="environment/NavigationRegion3D"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 mesh = SubResource("PlaneMesh_eal6j")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ukj7q")
+
+[node name="food" type="Node3D" parent="environment/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.25, -17)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="environment/NavigationRegion3D/food"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_m8bx1")
+surface_material_override/0 = SubResource("StandardMaterial3D_83uf0")
+
+[node name="rest" type="Node3D" parent="environment/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.25, 11)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="environment/NavigationRegion3D/rest"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_m8bx1")
+surface_material_override/0 = SubResource("StandardMaterial3D_5jirm")
+
+[node name="props" type="Node" parent="environment"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.64679, -0.410904, 0.642512, 0, 0.842453, 0.538771, -0.762668, -0.348472, 0.54489, 30, 20, 20)
+
+[node name="GOAPSensor" parent="." instance=ExtResource("1_n1y2w")]
 
 [node name="player" parent="." instance=ExtResource("3_twmce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)

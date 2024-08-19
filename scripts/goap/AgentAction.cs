@@ -11,7 +11,7 @@ public class AgentAction
     IActionStrategy Strategy;
     public bool Completed => Strategy.Completed;
     
-    public AgentAction(string name)
+    AgentAction(string name)
     {
         Name = name;
     }
