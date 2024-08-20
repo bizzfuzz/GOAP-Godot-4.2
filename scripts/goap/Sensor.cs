@@ -21,11 +21,18 @@ public partial class Sensor : Node
     public void UpdateTargetPosition(Node3D newTarget = null)
     {
         target = newTarget;
-        if(TargetInRange && (lastKnownPosition != TargetPosition || lastKnownPosition != Vector3.Zero))
+        if(newTarget == null)
         {
-            lastKnownPosition = TargetPosition;
-            OnTargetUpdated.Invoke();
+
         }
+        else
+        {
+            if(TargetInRange && (lastKnownPosition != TargetPosition || lastKnownPosition != Vector3.Zero))
+            {
+                lastKnownPosition = TargetPosition;
+            }
+        }
+        OnTargetUpdated.Invoke();
     }
     private void OnTimerTimeout()
     {
@@ -46,6 +53,7 @@ public partial class Sensor : Node
         if(body.IsInGroup(PlayerTag))
         {
             GD.Print("player exited");
+            UpdateTargetPosition();
         }
     }
 }

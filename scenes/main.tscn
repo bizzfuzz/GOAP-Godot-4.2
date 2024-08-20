@@ -60,10 +60,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -17)
 [node name="food" parent="environment/navmesh/food" instance=ExtResource("2_881bk")]
 
 [node name="rest" type="Node3D" parent="environment/navmesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.013, 0.1, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.1, 6)
 
 [node name="house" parent="environment/navmesh/rest" instance=ExtResource("2_2wj4n")]
-transform = Transform3D(-0.613748, 0, 0.789502, 0, 1, 0, -0.789502, 0, -0.613748, 0, 0, 0)
+transform = Transform3D(-0.613748, 0, 0.789502, 0, 1, 0, -0.789502, 0, -0.613748, -5, 0, 4)
 
 [node name="prop" type="Node3D" parent="environment"]
 
@@ -81,7 +81,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vl2wc")
 [node name="player" parent="actors" instance=ExtResource("3_twmce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 5)
 
-[node name="agent" parent="actors" instance=ExtResource("5_rfasl")]
+[node name="agent" parent="actors" node_paths=PackedStringArray("RestArea", "FoodArea") instance=ExtResource("5_rfasl")]
+RestArea = NodePath("../../environment/navmesh/rest")
+FoodArea = NodePath("../../environment/navmesh/food")
 
 [node name="Camera3D" type="Camera3D" parent="actors/agent"]
 transform = Transform3D(0.076526, -0.168478, 0.98273, -0.0186287, 0.985207, 0.170354, -0.996894, -0.0313435, 0.0722554, 10, 4.25078, 0)

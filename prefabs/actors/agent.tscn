@@ -9,9 +9,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fl74e"]
 
-[node name="agent" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayer")]
+[node name="agent" type="CharacterBody3D" node_paths=PackedStringArray("animationPlayer", "goapAgent", "StatsTimer")]
 script = ExtResource("1_sm282")
 animationPlayer = NodePath("AnimationPlayer")
+goapAgent = NodePath("goap")
+StatsTimer = NodePath("statsTimer")
 
 [node name="mesh" parent="." instance=ExtResource("2_4enuq")]
 
@@ -21,9 +23,12 @@ shape = SubResource("CapsuleShape3D_fl74e")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="goap" type="Node3D" parent="." node_paths=PackedStringArray("NavAgent")]
+[node name="goap" type="Node3D" parent="." node_paths=PackedStringArray("NavAgent", "ChaseSensor", "AttackSensor", "OwnBody")]
 script = ExtResource("1_5u634")
 NavAgent = NodePath("../NavigationAgent3D")
+ChaseSensor = NodePath("chaseSensor")
+AttackSensor = NodePath("attackSensor")
+OwnBody = NodePath("..")
 
 [node name="attackSensor" parent="goap" instance=ExtResource("3_rcx2d")]
 
@@ -34,3 +39,8 @@ root_node = NodePath("../mesh")
 libraries = {
 "animations": ExtResource("6_4d8gd")
 }
+
+[node name="statsTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="statsTimer" to="." method="StatsTimerCompleted"]
