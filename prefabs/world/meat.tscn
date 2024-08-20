@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6y6hcv67rguv"]
+
+[ext_resource type="PackedScene" uid="uid://dryfxhto6w7m2" path="res://meshes/food/roasted_meat.glb" id="1_3n3a2"]
+
+[node name="meat" type="Node3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_3n3a2")]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, 3, 0, -3, -1.31134e-07, 0, 0.52826, 0)

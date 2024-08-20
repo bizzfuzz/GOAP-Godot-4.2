@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc32tvt8h456q"]
+
+[ext_resource type="PackedScene" uid="uid://b6y6hcv67rguv" path="res://prefabs/world/meat.tscn" id="1_hu6vi"]
+[ext_resource type="Material" uid="uid://dg8mcp7wvrjju" path="res://materials/wood.tres" id="2_5q3ae"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lx347"]
+
+[node name="food" type="Node3D"]
+
+[node name="meat" parent="." instance=ExtResource("1_hu6vi")]
+transform = Transform3D(0.298694, 0.0279613, 0, -0.0279613, 0.298694, 0, 0, 0, 0.3, -0.0978699, 1.79529, 0.410316)
+
+[node name="meat2" parent="." instance=ExtResource("1_hu6vi")]
+transform = Transform3D(0.190065, 0.0177924, -0.231427, -0.0279613, 0.298694, 0, 0.23042, 0.0215701, 0.190896, -0.0978699, 1.98856, 0.410316)
+
+[node name="meat3" parent="." instance=ExtResource("1_hu6vi")]
+transform = Transform3D(-0.118559, -0.0110985, -0.275355, -0.0279613, 0.298694, 8.62134e-10, 0.274157, 0.0256643, -0.119077, -0.0978699, 2.53032, -0.235935)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 0.3, 0, 0, 0, 3, 0, 1, 0)
+mesh = SubResource("BoxMesh_lx347")
+surface_material_override/0 = ExtResource("2_5q3ae")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_lx347")
+surface_material_override/0 = ExtResource("2_5q3ae")
