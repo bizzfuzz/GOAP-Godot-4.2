@@ -8,6 +8,8 @@ public partial class GoapAgent : Node3D
 	[Export] private NavigationAgent3D NavAgent;
 	[Export] private Sensor ChaseSensor;
 	[Export] private Sensor AttackSensor;
+	[Export] private GoapStrategies.Idle idleStrategy;
+	[Export] private GoapStrategies.Wander wanderStrategy;
 
 	private AgentGoal LastGoal;
 	private AgentGoal CurrentGoal;
@@ -25,6 +27,7 @@ public partial class GoapAgent : Node3D
 
 		ChaseSensor.OnTargetUpdated += HandleTargetUpdated;
 		AttackSensor.OnTargetUpdated += HandleTargetUpdated;
+		wanderStrategy.NavAgent = NavAgent;
 	}
 	private void SetUpBeliefs()
     {
@@ -38,14 +41,14 @@ public partial class GoapAgent : Node3D
 	private void SetUpActions()
     {
 		Actions = new HashSet<AgentAction>();
-		Actions.Add(new AgentAction.Builder("relax")
+		/*Actions.Add(new AgentAction.Builder("relax")
             .WithStrategy(new IdleStartegy())
 			.AddEffect(Beliefs["nothing"])
 			.Build());
 		Actions.Add(new AgentAction.Builder("wander")
 			.WithStrategy(new WanderStartegy())
 			.AddEffect(Beliefs["agentMoving"])
-            .Build());
+            .Build());*/
 	}
 	private void SetUpGoals()
     {

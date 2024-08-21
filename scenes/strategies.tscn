@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy7peapjaddiw"]
+
+[ext_resource type="PackedScene" uid="uid://dkpgs7x0wgdph" path="res://prefabs/goap/strategies/idle.tscn" id="1_g2gie"]
+[ext_resource type="PackedScene" uid="uid://bebi5myt8acf1" path="res://prefabs/goap/strategies/wander.tscn" id="2_cq2e4"]
+
+[node name="strategies" type="Node3D"]
+
+[node name="idle" parent="." instance=ExtResource("1_g2gie")]
+Timer = null
+
+[node name="wander" parent="." instance=ExtResource("2_cq2e4")]

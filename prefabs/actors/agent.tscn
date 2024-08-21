@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd202hkqg2vu1"]
+[gd_scene load_steps=10 format=3 uid="uid://dd202hkqg2vu1"]
 
 [ext_resource type="Script" path="res://scripts/goap/GoapAgent.cs" id="1_5u634"]
 [ext_resource type="Script" path="res://scripts/actors/Actor.cs" id="1_sm282"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://2fp10p8xah0r" path="res://prefabs/goap/attack_sensor.tscn" id="3_rcx2d"]
 [ext_resource type="PackedScene" uid="uid://c1o3b3kakalel" path="res://prefabs/goap/chase_sensor.tscn" id="4_5p77h"]
 [ext_resource type="AnimationLibrary" uid="uid://j8qe6cjhg6sl" path="res://meshes/goblin/animations.res" id="6_4d8gd"]
+[ext_resource type="PackedScene" uid="uid://dkpgs7x0wgdph" path="res://prefabs/goap/strategies/idle.tscn" id="6_w4qv4"]
+[ext_resource type="PackedScene" uid="uid://bebi5myt8acf1" path="res://prefabs/goap/strategies/wander.tscn" id="7_p3dph"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fl74e"]
 
@@ -23,16 +25,24 @@ shape = SubResource("CapsuleShape3D_fl74e")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
-[node name="goap" type="Node3D" parent="." node_paths=PackedStringArray("NavAgent", "ChaseSensor", "AttackSensor", "OwnBody")]
+[node name="goap" type="Node3D" parent="." node_paths=PackedStringArray("OwnBody", "NavAgent", "ChaseSensor", "AttackSensor", "idleStrategy", "wanderStrategy")]
 script = ExtResource("1_5u634")
+OwnBody = NodePath("..")
 NavAgent = NodePath("../NavigationAgent3D")
 ChaseSensor = NodePath("chaseSensor")
 AttackSensor = NodePath("attackSensor")
-OwnBody = NodePath("..")
+idleStrategy = NodePath("strat/idle")
+wanderStrategy = NodePath("strat/wander")
 
 [node name="attackSensor" parent="goap" instance=ExtResource("3_rcx2d")]
 
 [node name="chaseSensor" parent="goap" instance=ExtResource("4_5p77h")]
+
+[node name="strat" type="Node3D" parent="goap"]
+
+[node name="idle" parent="goap/strat" instance=ExtResource("6_w4qv4")]
+
+[node name="wander" parent="goap/strat" instance=ExtResource("7_p3dph")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../mesh")

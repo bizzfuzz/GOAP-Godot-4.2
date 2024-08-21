@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bebi5myt8acf1"]
+
+[ext_resource type="Script" path="res://scripts/goap/Strategies/Wander.cs" id="1_8k5r5"]
+
+[node name="wander" type="Node3D" node_paths=PackedStringArray("Timer")]
+script = ExtResource("1_8k5r5")
+Timer = NodePath("Timer")
+Duration = 5.0
+WanderRadius = 3.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="TimerCompleted"]
