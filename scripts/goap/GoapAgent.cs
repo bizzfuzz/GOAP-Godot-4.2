@@ -28,8 +28,6 @@ public partial class GoapAgent : Node3D
 
 		ChaseSensor.OnTargetUpdated += HandleTargetUpdated;
 		AttackSensor.OnTargetUpdated += HandleTargetUpdated;
-		wanderStrategy.NavAgent = NavAgent;
-		wanderStrategy.OwnBody = OwnBody;
 	}
 	private void SetUpBeliefs()
     {

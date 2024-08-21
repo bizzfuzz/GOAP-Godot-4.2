@@ -8,9 +8,10 @@ namespace GoapStrategies
 		[Export] private float Duration;
 		[Export] private float WanderRadius;
 		[Export] private GoapAgent Goap;
-		public NavigationAgent3D NavAgent { get; set; }
+		[Export] private NavigationAgent3D NavAgent;
+		[Export] private CharacterBody3D OwnBody;
+
 		private readonly static float NavAttempts = 5;
-		public CharacterBody3D OwnBody;
 
 		public bool CanExecute => !Completed;
 
