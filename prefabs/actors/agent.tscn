@@ -42,7 +42,8 @@ wanderStrategy = NodePath("strat/wander")
 
 [node name="idle" parent="goap/strat" instance=ExtResource("6_w4qv4")]
 
-[node name="wander" parent="goap/strat" instance=ExtResource("7_p3dph")]
+[node name="wander" parent="goap/strat" node_paths=PackedStringArray("Goap") instance=ExtResource("7_p3dph")]
+Goap = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../mesh")

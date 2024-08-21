@@ -10,6 +10,7 @@ public partial class GoapAgent : Node3D
 	[Export] private Sensor AttackSensor;
 	[Export] private GoapStrategies.Idle idleStrategy;
 	[Export] private GoapStrategies.Wander wanderStrategy;
+	[Export] private float InteractRange = 2.0f;
 
 	private AgentGoal LastGoal;
 	private AgentGoal CurrentGoal;
@@ -28,6 +29,7 @@ public partial class GoapAgent : Node3D
 		ChaseSensor.OnTargetUpdated += HandleTargetUpdated;
 		AttackSensor.OnTargetUpdated += HandleTargetUpdated;
 		wanderStrategy.NavAgent = NavAgent;
+		wanderStrategy.OwnBody = OwnBody;
 	}
 	private void SetUpBeliefs()
     {
@@ -68,5 +70,16 @@ public partial class GoapAgent : Node3D
 		CurrentAction = null;
 		CurrentGoal = null;
 	}
-	
+	public bool InRangeOf(Vector3 position)
+    {
+        return OwnBody.GlobalTransform.Origin.DistanceTo(position) <= InteractRange;
+    }
+	public bool AtDestination()
+	{
+		return NavAgent.DistanceToTarget() <= InteractRange;
+	}
+	public bool FollowingPath()
+	{
+		return !NavAgent.IsNavigationFinished();
+	}
 }
